@@ -1,4 +1,4 @@
-#Pontos
+# Pontos
 
 Em competições há três pricipais maneiras de se representar pontos no computador: em classes/structs, por pairs e por arrays - sendo a última a menos usada.
 * Por pairs tem a vantagem de ter algumas funções já implementadas por padrão, como operadores da atribuiçao e comparação.
