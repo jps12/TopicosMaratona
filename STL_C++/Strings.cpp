@@ -52,4 +52,30 @@ stold("3.99"); // string para long double
 
 to_string(123.54); // converte de qualquer tipo para string
 
+nome.size();// retorna o tamanho da string
+nome.clear(); // Limpa a string
+nome.empty(); // Retorna true se a string estiver vazia
+
+nome.back(); // acessa o último elemento da string
+nome.front(); // acessa o primeiro elemento da string
+
+
+nome.erase(10, 8); // Apaga 8 elementos a partir da 10 posição
+nome.erase(5); // Apaga o 5º termo
+nome.erase(nome.begin(), nome.begin()+3); // Apaga do inicio da string até 3 posições depois
+
+nome.replace(9, 5, "algo"); // substitui os 5 caracteres a partir da posicao 9 por "algo"
+nome.replace(nome.begin(), nome.end()-10, "Hello"); // Substitui o que tá entre esses dois iteradores pela string na função
+
+nome.swap(sobrenome); // Troca o conteudo das duas strings
+
+string substr;
+
+nome.find(substr); // Retorna a posicao do primero caractere da subtring caso encontre
+// caso não ache a função acima retorna string::npos
+nome.rfind(substr); // Acha a ultima ocorrencia da substring
+
+nome.substr(3, 5); // Retorna uma string relativa a substring 5 caracteres a partir da posicao 3
+nome.substr(4); // Retorna uma substring a aprtir da posição 5 ate o final da string original
+
 }
