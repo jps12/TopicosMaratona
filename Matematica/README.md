@@ -1,7 +1,14 @@
 
 # GCD:
 É um algoritmo que calcula o maior divisor comum entre dois números inteiros em complexidade log(log(n)). A linguagem C++ possui ela implementada por padrão usando __gcd(variavelA, variavelB).
+ ``` c++
+int gcd(int a, int b){ 
+    return b==0? a : gcd(b, a%b); 
+}
+ ```
+
 # Fatoração:
+
 # Crivo de Eratostones: 
 # Permutações: 
 ## Propriedades:
