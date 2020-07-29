@@ -25,6 +25,41 @@ void Radix_Sort(vector<int>& v){
     v = new_v;
 }
 
+void Radix_Sort(vector<pair<int,int>> &v){
+    Radix_sort_pair(v, 2);
+    Radix_sort_pair(v, 1);
+}
+
+void Radix_sort_pair(vector<pair<int, int>> &v, int pos){
+    int n = v.size(), max_num = 0;
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) max_num = max(max_num, v[i].first);
+        else max_num = max(max_num, v[i].second);
+    }
+    vector<int> cnt(max_num + 1), p(n);
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) cnt[v[i].first]++;
+        else cnt[v[i].second]++;
+    }
+
+    for (int i=1; i<n; i++){
+        p[i] = p[i-1] + cnt[i-1];
+    }
+
+    vector<pair<int, int>> new_v(n);
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) new_v[p[v[i].first]] = v[i];
+        else new_v[p[v[i].second]] = v[i];
+    }
+
+    v = new_v;
+}
+
+
+
 int main (){
     int n;
     cin >> n;
