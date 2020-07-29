@@ -2,6 +2,40 @@
 
 using namespace std;
 
+void Radix_sort_pair(vector<pair<pair<int,int>, int>> &v, int pos){
+    int n = v.size(), max_num = 0;
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) max_num = max(max_num, v[i].first.first);
+        else max_num = max(max_num, v[i].first.second);
+    }
+    vector<int> cnt(max_num + 1), p(n);
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) cnt[v[i].first.first]++;
+        else cnt[v[i].first.second]++;
+    }
+
+    for (int i=1; i<n; i++){
+        p[i] = p[i-1] + cnt[i-1];
+    }
+
+    vector<pair<pair<int,int>, int>> new_v(n);
+
+    for (int i=0; i<n; i++){
+        if (pos == 1) new_v[p[v[i].first.first]] = v[i];
+        else new_v[p[v[i].first.second]] = v[i];
+    }
+
+    v = new_v;
+}
+
+void Radix_Sort(vector<pair<pair<int,int>, int>> &v){
+    Radix_sort_pair(v, 2);
+    Radix_sort_pair(v, 1);
+}
+
+
 vector<int> Suffix_Array(string s){
     // Add caractere '&' like less that all others
     s += '$';
@@ -37,8 +71,9 @@ vector<int> Suffix_Array(string s){
         for (int i=0; i<n; i++){
             a[i] = {{c[i],c[(i + (1 << k))%n]}, i};
         }
- 
-        sort(a.begin(), a.end());
+    
+        // You can sort By radix sort because the max numbre is less than n
+        Radix_Sort(a);
     
         // Saving the indice "father" of the suffix
         for (int i=0; i<n; i++){
