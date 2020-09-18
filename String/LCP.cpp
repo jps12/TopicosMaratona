@@ -2,6 +2,11 @@
 /*
 Using suffix Array we can create the array LCP 
 Longest Common Prefix 
+Analyzing the greatest suffix(with size i) and the previous suffix in the 
+suffix array (with size j), let consider that they have a common prefix
+with size k. the suffix with size i-1 will have at least a common prefix 
+with size k-1, because this suffix is the suffix with size i deleting the first caractere.
+
 */
 using namespace std;
 
