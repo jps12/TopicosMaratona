@@ -8,7 +8,7 @@ class SegTree{
         vector<T> vs, lz;
         int sz;
         void push(int i, int l, int r){
-            vs[i] += lz[i];
+            vs[i] += lz[i]*(r - l + 1);
             if (l < r){
                 lz[i*2+1] += lz[i];
                 lz[i*2] += lz[i];
@@ -50,7 +50,7 @@ class SegTree{
             b = query(i+1, mid+1, r, val, ql, qr);
             return a + b;
         }
-        
+
     public:
         SegTree(int n){
             vs.assign(4*n, 0);
