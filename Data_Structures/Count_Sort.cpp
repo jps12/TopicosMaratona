@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Radix_Sort(vector<int>& v){
+void Count_Sort(vector<int>& v){
     int n = v.size(), max_num = 0;
     for (int i=0; i<n; i++) max_num = max(max_num, v[i]);
 
@@ -25,12 +25,12 @@ void Radix_Sort(vector<int>& v){
     v = new_v;
 }
 
-void Radix_Sort(vector<pair<int,int>> &v){
-    Radix_sort_pair(v, 2);
-    Radix_sort_pair(v, 1);
+void Count_Sort(vector<pair<int,int>> &v){
+    Count_sort_pair(v, 2);
+    Count_sort_pair(v, 1);
 }
 
-void Radix_sort_pair(vector<pair<int, int>> &v, int pos){
+void Count_sort_pair(vector<pair<int, int>> &v, int pos){
     int n = v.size(), max_num = 0;
 
     for (int i=0; i<n; i++){
@@ -67,7 +67,7 @@ int main (){
 
     for (int i=0; i<n; i++) cin >> v[i];
 
-    Radix_Sort(v);
+    Count_Sort(v);
 
     for (int i=0; i<n; i++){
         cout << v[i] << " ";
