@@ -11,11 +11,11 @@ class Matrix{
 
     Matrix(int l, int c){
         v.resize(l, vector<T>(c));
-        this.l = l;
-        this.c  = c;
+        this->l = l;
+        this->c  = c;
     }
 
-    m_null(){
+    void m_null(){
         for (int i=0; i<l; i++){
             for (int j=0; j<c;j++){
                 v[i][j] = 0;
@@ -23,23 +23,26 @@ class Matrix{
         }
     }
 
-    operator*(Matrix b){
-        if (c != b.l) return b.m_nul();
+    Matrix operator*(Matrix b){
+        if (c != b.l) {
+            b.m_null();
+            return b;
+        }
         Matrix ans(l, b.c);
 
         for (int i=0; i<l; i++){
             for (int j=0; j<b.c; j++){
                 T sum = 0;
                 for (int k=0; k<c; k++){
-                    sum += v[i][k] + b.v[k][j];
+                    sum += v[i][k]*b.v[k][j];
                 }
-                ans[i][j] = sum;
+                ans.v[i][j] = sum;
             }
         }
         return ans;
     }
 
-    iden(){
+    void iden(){
         for (int i=0; i<l; i++){
             for (int j=0; j<c; j++){
                 T& val = v[i][j];
@@ -47,5 +50,14 @@ class Matrix{
                 else val = 0;
             }
         }
+    }
+    void print(){
+        for (int i=0; i<l; i++){
+            for (int j=0; j<c; j++){
+                cout << v[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
     }
 };
